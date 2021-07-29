@@ -14,9 +14,8 @@ Use Following Command to make it an exe FILE
 # How to USE.
 ## As Python Script
 Run it as a Python Script using command
-    -> python3infosimp.py
+    -> python3 `infosimp.py`
 ## As EXE FILE
 Run it as a Python Script using command
-    -> infosimp.exe
- 
+    -> `infosimp.exe`
 #
