@@ -17,10 +17,14 @@ def banner():
     time.sleep(3)
     
     print('\n')
-    print("III  N    N  FFFF  OOO     SSSS III  M         M  P P  ")
-    print(" I   N N  N  FFFF O    O  SS     I   M M     M M  P  P ")
-    print(" I   N  N N  F    O    O    SS   I   M   M  M  M  P P  ")
-    print("III  N    N  F     OOO   SSSS   III  M    M    M  P    by naqviO7")
+    print("""
+          __      ___________  __ ____  
+(_)_ __  / _| ___/ ___|_ _|  \/  |  _ \ 
+| | '_ \| |_ / _ \___ \| || |\/| | |_) |
+| | | | |  _| (_) |__) | || |  | |  __/ 
+|_|_| |_|_|  \___/____/___|_|  |_|_|    
+        
+          """)
     print('\n')
     
     time.sleep(3)
@@ -46,7 +50,7 @@ def get_size(bytes, suffix="B"):
     factor = 1024
     for unit in ["", "K", "M", "G", "T", "P"]:
         if bytes < factor:
-            return f"{bytes:.2f}{unit}{suffix}"
+            return (f"{bytes:.2f}{unit}{suffix}")
         bytes /= factor
   
 # => using platform module displaying system details    
