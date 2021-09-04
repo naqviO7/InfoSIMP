@@ -3,13 +3,16 @@
 # => importing required python modules
 import psutil
 import platform
-from datetime import datetime
+import os
+import sys
 import time
 from os import system
-import os
+from datetime import datetime
+
 
 # => setting window title 
 system("title " + "InfoSIMP")
+
 
 # => banner function 
 # => prints simple banner made for this program
@@ -23,11 +26,13 @@ def banner():
 | | '_ \| |_ / _ \___ \| || |\/| | |_) |
 | | | | |  _| (_) |__) | || |  | |  __/ 
 |_|_| |_|_|  \___/____/___|_|  |_|_|    
-        
-          """)
+                            Version 1.0
+                                    by naqviO7
+""")          
     print('\n')
     
     time.sleep(3)
+ 
     
 # => table of contents
 # => menu of program/tool
@@ -38,6 +43,7 @@ def menu():
     print("-> Press 3 for Memory Usage Information!")
     print("-> Press 4 for Disk Usage Information!")
     print("-> Press 5 for Network Information!")
+  
     
 # => function that converts large number of bytes into a scaled format (e.g in kilo, mega, giga, etc.)    
 def get_size(bytes, suffix="B"):
@@ -52,6 +58,7 @@ def get_size(bytes, suffix="B"):
         if bytes < factor:
             return (f"{bytes:.2f}{unit}{suffix}")
         bytes /= factor
+ 
   
 # => using platform module displaying system details    
 def system_information():
@@ -63,6 +70,7 @@ def system_information():
     print(f"-> Version: {uname.version}")
     print(f"-> Machine: {uname.machine}")
     print(f"-> Processor: {uname.processor}")    
+ 
     
 # => displaying number of cores and usage of CPU
 def cpu_information():
@@ -84,6 +92,7 @@ def cpu_information():
         print(f"-> Core {i}: {percentage} %")
     print(f"-> Total CPU Usage: {psutil.cpu_percent()} %")
 
+
 # => displaying memory usages
 def memory_information():
     print("="*40, "Memory Information", "="*40)
@@ -103,6 +112,7 @@ def memory_information():
     print(f"-> Used: {get_size(swap.used)}")
     print(f"-> Percentage: {swap.percent}%")
       
+
       
 def disk_information():
     print("="*40, "Disk Information", "="*40)
@@ -129,6 +139,7 @@ def disk_information():
     disk_io = psutil.disk_io_counters()
     print(f"-> Total read: {get_size(disk_io.read_bytes)}")
     print(f"-> Total write: {get_size(disk_io.write_bytes)}")  
+
 
 def network_information():
     print("="*40, "Network Information", "="*40)
@@ -157,16 +168,28 @@ def network_information():
 # => execution of code starts from here
 # => all functions are called inthis part of code    
 def main_function():
-    # => clearing screen of previous output
+    # => clearing screen of previous output in windows
     os.system('cls')
+    
+    # clearing screen of previous output in linux
+    os.system('clear')
+    
     # => displaying banner
     banner()
     
+    time.sleep(2)
+    
     print("="*40, "W E L C O M E", "="*40)
-    print("Options to USE:\n -> Press 0 to Default Run.\n -> Press 1 to Custom Run")
+    print("Options to USE:\n -> Press 1 to Default Run.\n -> Press 2 to Custom Run\n -> Press 0 to Quit")
     
     key=int(input('Enter Key to Run: '))
     if key==0:
+        print('\nQuitting... InfoSimp\n')
+        
+        time.sleep(1)
+        sys.exit()
+            
+    elif key==1:
         print("\nRunning Infosimp in Default Mode!\n")
         time.sleep(1.5)
         system_information()
@@ -188,7 +211,7 @@ def main_function():
         print("\n")
         
             
-    elif key==1:
+    elif key==2:
         print("\nRunning Infosimp in Custom Mode!\n")
         menu()
         num=int(input("Enter Operation to Perform: "))
@@ -236,15 +259,22 @@ def main_function():
             print("\n")
             print("="*30, "E X I T I N G", "="*30)
             print("\n")
+    
     else:
         print("-> Invalid Option!")
         print("\n")
         print("="*30, "E X I T I N G", "="*30)
         print("\n")    
-        
-# => Calling main function
-main_function()
-
-input()
+ 
+  
+#manaing importing for other files  
+if __name__ == "__main__":        
+    
+    # => Calling main function
+    main_function()
+    
+    time.sleep(1)
+    input()
+    
 
 # => END OF CODE
