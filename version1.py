@@ -7,6 +7,7 @@ from datetime import datetime
 import time
 from os import system
 import os
+import sys
 
 # => setting window title 
 system("title " + "InfoSIMP")
@@ -23,7 +24,8 @@ def banner():
 | | '_ \| |_ / _ \___ \| || |\/| | |_) |
 | | | | |  _| (_) |__) | || |  | |  __/ 
 |_|_| |_|_|  \___/____/___|_|  |_|_|    
-        
+                            Version 1.0
+                                by naqviO7
           """)
     print('\n')
     
@@ -163,10 +165,14 @@ def main_function():
     banner()
     
     print("="*40, "W E L C O M E", "="*40)
-    print("Options to USE:\n -> Press 0 to Default Run.\n -> Press 1 to Custom Run")
+    print("Options to USE:\n -> Press 1 to Default Run.\n -> Press 2 to Custom Run\n -> Press 0 to Quit")
     
     key=int(input('Enter Key to Run: '))
-    if key==0:
+    if key==  0:
+        print('\n\tQuitting... InfoSIMP.\n')
+        sys.exit(1)
+        
+    elif key==1:
         print("\nRunning Infosimp in Default Mode!\n")
         time.sleep(1.5)
         system_information()
@@ -188,7 +194,7 @@ def main_function():
         print("\n")
         
             
-    elif key==1:
+    elif key==2:
         print("\nRunning Infosimp in Custom Mode!\n")
         menu()
         num=int(input("Enter Operation to Perform: "))
@@ -241,9 +247,12 @@ def main_function():
         print("\n")
         print("="*30, "E X I T I N G", "="*30)
         print("\n")    
-        
-# => Calling main function
-main_function()
 
-input()
-# => END OF CODE
+
+#making check for importing situation
+if __name__ == "__main__":        
+    # => Calling main function
+    main_function()
+
+    input()
+    # => END OF CODE
